@@ -17,11 +17,11 @@ app.use(express.urlencoded({
     extended:true
 }));
 
-app.set("view engine", "ejs")
-
 app.use(express.static('static'))
 
 app.use(express.static('./server/routes/router.js'))
+
+app.use('/', require('./server/routes/router'))
 
 app.listen(port, () => {
     console.log(`server is running on port https://localhost:${port}`)
