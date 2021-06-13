@@ -1,6 +1,8 @@
+const { reset } = require('nodemon');
 var User = require('../model/model') 
 
 exports.create = (req,res) => {
+    
     if(!req.body) {
         res.status(400).send({message: "Content cannot be empty!"});
         return;
@@ -24,7 +26,15 @@ exports.create = (req,res) => {
 }
 
 exports.find = (req,res) => {
-    
+
+    User.find()
+    .then(user => {
+        res.send(user)
+    })
+    .catch(err=> {
+        res.status(500).send({
+            message: err.message || `Error occured while retrieving user data`})
+    })
 }
 
 exports.update = (req,res) => {
