@@ -1,4 +1,3 @@
-const { reset } = require('nodemon');
 var User = require('../model/model') 
 
 exports.create = (req,res) => {
