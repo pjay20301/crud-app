@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-var userSchema = new mongoose.Schema({
+var authorSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         required: true
@@ -8,13 +9,36 @@ var userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true
     },
     age: {
         type: Number,
         required: true
     }
 })
+const Author = mongoose.model('Author', authorSchema)
 
-const User = mongoose.model('User', userSchema)
-module.exports = User;
+var bookSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    name: {
+        type: String,
+        required: true
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Author',
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    }
+    
+
+})
+const Book = mongoose.model('Book', bookSchema)
+
+module.exports = {
+    Author: Author,
+    Book: Book
+};
+
