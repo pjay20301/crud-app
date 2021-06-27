@@ -24,8 +24,6 @@ exports.create = (req,res) => {
             message: err.message || `some error occured while creating a create operation`
         })
     })
-
-    
 }
 
 exports.find = (req,res) => {

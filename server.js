@@ -17,8 +17,9 @@ app.use(express.urlencoded({
     extended:true
 }));
 
-app.use(express.static('static'))
-
+app.get('/', (req,res) => {
+    res.send('Server running')
+})
 app.use(express.static('./server/routes/router.js'))
 
 app.use('/', require('./server/routes/router'))

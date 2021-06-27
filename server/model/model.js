@@ -32,11 +32,8 @@ var bookSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-    
-
 })
 const Book = mongoose.model('Book', bookSchema)
-
 module.exports = {
     Author: Author,
     Book: Book
